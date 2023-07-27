@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="icon" href="./assets/Images/bookmark.png" /> -->
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Login</title>
+  </head>
+  <span class="d-none" id="username"></span>
+
+  <div class="container my-5 text-center">
+    <div class="group m-auto w-75 p-5">
+      <h1>Smart Login System</h1>
+
+      <div class="form-floating mb-3 mt-3">
+        <input
+          type="text"
+          class="form-control"
+          id="signupName"
+          placeholder="Enter your name"
+        />
+        <label id="labelSignupName" for="signupName">Enter your name</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="signupEmail"
+          placeholder="Enter your email"
+        />
+        <label id="labelSignupEmail" for="signupEmail">Enter your email</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input
+          type="password"
+          class="form-control"
+          id="signupPassword"
+          placeholder="Enter  password"
+        />
+        <label id="labelSignupPassword" for="signupPassword"
+          >Enter password</label
+        >
+      </div>
+      <p id="exist"></p>
+
+      <button onclick=" signUp()" class="btn btn-outline-info w-100 my-3">
+        Sign Up
+      </button>
+      <p class="text-white">
+        You have an account? <a class="text-white" href="index.html">Signin</a>
+      </p>
+    </div>
+  </div>
+  <body>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
