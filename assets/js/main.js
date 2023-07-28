@@ -150,7 +150,7 @@ var passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{3,}$/;
 
 const nameRequirements = [
   { regex: /.{3,}/, index: 0 },
-  { regex: /^[A-Z][a-z]*$/, index: 1 },
+  { regex: /^[A-Z]\w*$/, index: 1 },
 ];
 
 const mailRequirements = [
