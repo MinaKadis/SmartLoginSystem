@@ -277,29 +277,29 @@ if (signupPassword) {
 }
 
 // ============= for Disable Right Click ================
-document.addEventListener("contextmenu", (event) =>
-  event.preventDefault(alert("sorry you can`t check my code"))
-);
+// document.addEventListener("contextmenu", (event) =>
+//   event.preventDefault(alert("sorry you can`t check my code"))
+// );
 
-document.onkeydown = function (e) {
-  // disable F12 key
-  if (e.keyCode == 123) {
-    alert("sorry you can`t check my code");
-    return false;
-  }
+// document.onkeydown = function (e) {
+//   // disable F12 key
+//   if (e.keyCode == 123) {
+//     alert("sorry you can`t check my code");
+//     return false;
+//   }
 
-  // disable I key
-  if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
-    return false;
-  }
+//   // disable I key
+//   if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+//     return false;
+//   }
 
-  // disable J key
-  if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
-    return false;
-  }
+//   // disable J key
+//   if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+//     return false;
+//   }
 
-  // disable U key
-  if (e.ctrlKey && e.keyCode == 85) {
-    return false;
-  }
-};
+//   // disable U key
+//   if (e.ctrlKey && e.keyCode == 85) {
+//     return false;
+//   }
+// };
