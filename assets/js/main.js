@@ -5,6 +5,21 @@ var signupPassword = document.getElementById("signupPassword");
 var signinEmail = document.getElementById("signinEmail");
 var signinPassword = document.getElementById("signinPassword");
 
+//Signup warnings
+var userNameWarn = document.getElementById("userNameWarn");
+var userEmailWarn = document.getElementById("userEmailWarn");
+var userPasswordWarn = document.getElementById("userPasswordWarn");
+
+var requirementListName = document.querySelectorAll(
+  ".requirement-list-name li"
+);
+var requirementListEmail = document.querySelectorAll(
+  ".requirement-list-email li"
+);
+var requirementListPassword = document.querySelectorAll(
+  ".requirement-list-password li"
+);
+
 //Clear all inputs
 function clearInputs() {
   signupName.value = "";
@@ -24,6 +39,9 @@ if (username) {
 }
 
 var signUpArray = [];
+var validateName,
+  validateEmail,
+  validatePassword = false;
 
 if (localStorage.getItem("users") == null) {
   signUpArray = [];
@@ -55,9 +73,15 @@ function isEmailExist() {
 }
 
 function signUp() {
+  debugger;
   if (!isEmpty()) {
     document.getElementById("exist").innerHTML =
       '<span class="text-danger m-3">All inputs are required</span>';
+    return false;
+  }
+  if (!validateName || !validateEmail || !validatePassword) {
+    document.getElementById("exist").innerHTML =
+      '<span class="text-danger m-3">Please Make Sure all inputs meets requirements</span>';
     return false;
   }
   var baseURL = window.location.origin;
@@ -121,8 +145,8 @@ function logout() {
 
 // ============= for Validation ================
 var nameRegex = /^[A-Z]\w{2,}(\s+\w+)*$/;
-var mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-var passwordRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+var mailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+var passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{3,}$/;
 
 const nameRequirements = [
   { regex: /.{3,}/, index: 0 },
@@ -130,17 +154,22 @@ const nameRequirements = [
 ];
 
 const mailRequirements = [
-  { regex: /.{3,}/, index: 0 },
   {
-    regex: /^(https?:\/\/)?(w{3}\.)?\w+\.\w{2,}\/?(:\d{2,5})?(\/\w+)*$/,
+    // Stage 1: At least 3 characters
+    regex: /.{3,}/,
+    index: 0,
+  },
+  {
+    // Stage 2: Valid email format
+    regex: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
     index: 1,
   },
 ];
 
-const passowrdRequirements = [
+const passwordRequirements = [
   { regex: /.{3,}/, index: 0 },
   {
-    regex: /^(https?:\/\/)?(w{3}\.)?\w+\.\w{2,}\/?(:\d{2,5})?(\/\w+)*$/,
+    regex: /^(?=.*\d).+$/,
     index: 1,
   },
 ];
@@ -156,3 +185,121 @@ function validate(element, regex) {
     element.classList.remove("is-valid");
   }
 }
+
+if (signupName) {
+  signupName.addEventListener("keyup", (e) => {
+    let isValid = true;
+    debugger;
+    nameRequirements.forEach((item) => {
+      const isRequirementMet = item.regex.test(e.target.value);
+      const requirementItem = requirementListName[item.index];
+      debugger;
+      if (isRequirementMet) {
+        requirementItem.classList.add("valid");
+        requirementItem.firstElementChild.className = "fa-solid fa-check";
+      } else {
+        requirementItem.classList.remove("valid");
+        requirementItem.firstElementChild.className = "fa-solid fa-circle";
+        isValid = false;
+        validateName = false;
+      }
+    });
+    debugger;
+    if (isValid) {
+      userNameWarn.classList.add("d-none");
+      validate(signupName, nameRegex);
+      validateName = true;
+    } else {
+      userNameWarn.classList.remove("d-none");
+      validate(signupName, nameRegex);
+    }
+  });
+}
+
+if (signupEmail) {
+  signupEmail.addEventListener("keyup", (e) => {
+    let isValid = true;
+    debugger;
+    mailRequirements.forEach((item) => {
+      const isRequirementMet = item.regex.test(e.target.value);
+      const requirementItem = requirementListEmail[item.index];
+      debugger;
+      if (isRequirementMet) {
+        requirementItem.classList.add("valid");
+        requirementItem.firstElementChild.className = "fa-solid fa-check";
+      } else {
+        requirementItem.classList.remove("valid");
+        requirementItem.firstElementChild.className = "fa-solid fa-circle";
+        isValid = false;
+        validateEmail = false;
+      }
+    });
+    debugger;
+    if (isValid) {
+      userEmailWarn.classList.add("d-none");
+      validate(signupEmail, mailRegex);
+      validateEmail = true;
+    } else {
+      userEmailWarn.classList.remove("d-none");
+      validate(signupEmail, mailRegex);
+    }
+  });
+}
+
+if (signupPassword) {
+  signupPassword.addEventListener("keyup", (e) => {
+    let isValid = true;
+    debugger;
+    passwordRequirements.forEach((item) => {
+      const isRequirementMet = item.regex.test(e.target.value);
+      const requirementItem = requirementListPassword[item.index];
+      debugger;
+      if (isRequirementMet) {
+        requirementItem.classList.add("valid");
+        requirementItem.firstElementChild.className = "fa-solid fa-check";
+      } else {
+        requirementItem.classList.remove("valid");
+        requirementItem.firstElementChild.className = "fa-solid fa-circle";
+        isValid = false;
+        validatePassword = false;
+      }
+    });
+    debugger;
+    if (isValid) {
+      userPasswordWarn.classList.add("d-none");
+      validate(signupPassword, passwordRegex);
+      validatePassword = true;
+    } else {
+      userPasswordWarn.classList.remove("d-none");
+      validate(signupPassword, passwordRegex);
+    }
+  });
+}
+
+// ============= for Disable Right Click ================
+document.addEventListener("contextmenu", (event) =>
+  event.preventDefault(alert("sorry you can`t check my code"))
+);
+
+document.onkeydown = function (e) {
+  // disable F12 key
+  if (e.keyCode == 123) {
+    alert("sorry you can`t check my code");
+    return false;
+  }
+
+  // disable I key
+  if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+    return false;
+  }
+
+  // disable J key
+  if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+    return false;
+  }
+
+  // disable U key
+  if (e.ctrlKey && e.keyCode == 85) {
+    return false;
+  }
+};

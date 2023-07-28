@@ -24,6 +24,25 @@
         />
         <label id="labelSignupName" for="signupName">Enter your name</label>
       </div>
+      <div
+        class="alert alert-danger mt-2 d-none"
+        id="userNameWarn"
+        role="alert"
+      >
+        <div class="content">
+          <p>Name must contains</p>
+          <ul class="requirement-list-name">
+            <li>
+              <i class="fa-solid fa-circle"></i>
+              <span>At least 3 characters length</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle"></i>
+              <span>Starts with 1 uppercase letter (A...Z)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <div class="form-floating mb-3">
         <input
@@ -33,6 +52,26 @@
           placeholder="Enter your email"
         />
         <label id="labelSignupEmail" for="signupEmail">Enter your email</label>
+      </div>
+
+      <div
+        class="alert alert-danger mt-2 d-none"
+        id="userEmailWarn"
+        role="alert"
+      >
+        <div class="content">
+          <p>Email must contains</p>
+          <ul class="requirement-list-email">
+            <li>
+              <i class="fa-solid fa-circle"></i>
+              <span>At least 3 characters length</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle"></i>
+              <span>Valid Email Foramt with @ Sign</span>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="form-floating mb-3">
@@ -45,6 +84,25 @@
         <label id="labelSignupPassword" for="signupPassword"
           >Enter password</label
         >
+      </div>
+      <div
+        class="alert alert-danger mt-2 d-none"
+        id="userPasswordWarn"
+        role="alert"
+      >
+        <div class="content">
+          <p>Password must contains</p>
+          <ul class="requirement-list-password">
+            <li>
+              <i class="fa-solid fa-circle"></i>
+              <span>At least 3 characters length</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle"></i>
+              <span>At least one Number</span>
+            </li>
+          </ul>
+        </div>
       </div>
       <p id="exist"></p>
 

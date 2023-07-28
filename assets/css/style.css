@@ -152,3 +152,133 @@ textarea:focus {
     transform: translate(0);
   }
 }
+
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.content {
+  margin: 20px 0 10px;
+}
+.content p {
+  color: #333;
+  font-size: 1rem;
+  display: flex;
+}
+.content .requirement-list-name,
+.content .requirement-list-email,
+.content .requirement-list-password {
+  margin-top: 20px;
+}
+.requirement-list-name li,
+.requirement-list-email li,
+.requirement-list-password li {
+  font-size: 0.9rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.requirement-list-name li i,
+.requirement-list-password li i,
+.requirement-list-email li i {
+  width: 20px;
+  color: #aaa;
+  font-size: 0.6rem;
+}
+.requirement-list-name li.valid i,
+.requirement-list-password li.valid i,
+.requirement-list-email li.valid i {
+  font-size: 1rem;
+  color: #4285f4;
+}
+.requirement-list-name li span,
+.requirement-list-password li span,
+.requirement-list-email li span {
+  margin-left: 12px;
+  color: #333;
+}
+.requirement-list-name li.valid span,
+.requirement-list-password li.valid span,
+.requirement-list-email li.valid span {
+  color: #999;
+}
+
+.content .requirements-list-name,
+.content .requirements-list-password,
+.content .requirements-list-email {
+  margin-top: 20px;
+}
+.requirements-list-email li,
+.requirements-list-name li,
+.requirements-list-password li {
+  font-size: 0.9rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.requirements-list-name li i,
+.requirements-list-password li i,
+.requirements-list-email li i {
+  width: 20px;
+  color: #aaa;
+  font-size: 0.6rem;
+}
+.requirements-list-name li.valid i,
+.requirements-list-email li.valid i,
+.requirements-list-password li.valid i {
+  font-size: 1rem;
+  color: #4285f4;
+}
+.requirements-list-name li span,
+.requirements-list-email li span,
+.requirements-list-password li span {
+  margin-left: 12px;
+  color: #333;
+}
+.requirements-list-name li.valid span,
+.requirements-list-email li.valid span,
+.requirements-list-password li.valid span {
+  color: #999;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    padding: 15px;
+  }
+  .pass-field {
+    height: 55px;
+  }
+  .pass-field input,
+  .content p {
+    font-size: 1.15rem;
+  }
+  .pass-field i,
+  .requirement-list-name li,
+  .requirement-list-email li,
+  .requirement-list-password li {
+    font-size: 1.1rem;
+  }
+  .requirement-list-name li span,
+  .requirement-list-email li span,
+  .requirement-list-password li span {
+    margin-left: 7px;
+  }
+
+  .requirements-list-name li,
+  .requirements-list-password li,
+  .requirements-list-email li {
+    font-size: 1.1rem;
+  }
+  .requirements-list-name li span,
+  .requirements-list-email li span,
+  .requirements-list-password li span {
+    margin-left: 7px;
+  }
+}
