@@ -1,2 +1,2 @@
 # SmartLoginSystem
-Assigenment 4 / RouteAcademy / JavaScript
+Java Script project of login and register pages with validations
